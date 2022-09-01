@@ -63,8 +63,8 @@ setup(
     install_requires=[
         'cbor==1.0.0',
         'base58==2.1.1',
-        'pymultihash==0.8.2',
-        'multiaddr',
+        'pymultihash@git+https://github.com/planetmint/pymultihash.git#egg=pymultihash',
+        'multiaddr@git+https://github.com/planetmint/py-multiaddr.git@update-dependencies#egg=multiaddr',
     ],
     setup_requires=['pytest-runner'],
     tests_require=tests_require,
