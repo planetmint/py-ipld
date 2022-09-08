@@ -5,71 +5,67 @@ from setuptools import setup, find_packages
 
 
 def read(*names, **kwargs):
-    with open(
-        os.path.join(os.path.dirname(__file__), *names),
-        encoding=kwargs.get('encoding', 'utf8')
-    ) as fp:
+    with open(os.path.join(os.path.dirname(__file__), *names), encoding=kwargs.get("encoding", "utf8")) as fp:
         return fp.read()
 
 
 def find_version(*file_paths):
     version_file = read(*file_paths)
-    version_match = re.search(
-        r'^__version__ = [\'"]([^\'"]*)[\'"]', version_file, re.M)
+    version_match = re.search(r'^__version__ = [\'"]([^\'"]*)[\'"]', version_file, re.M)
     if version_match:
         return version_match.group(1)
-    raise RuntimeError('Unable to find version string.')
+    raise RuntimeError("Unable to find version string.")
 
 
-with open('README.rst', encoding='utf-8') as readme:
+with open("README.rst", encoding="utf-8") as readme:
     long_description = readme.read()
 
 
 tests_require = [
-    'pep8',
-    'pyflakes',
-    'pylint',
-    'pytest',
-    'pytest-cov',
-    'pytest-xdist',
-    'pytest-flask',
+    "pep8",
+    "pyflakes",
+    "pylint",
+    "pytest",
+    "pytest-cov",
+    "pytest-xdist",
+    "pytest-flask",
 ]
 
 dev_require = [
-    'ipdb',
-    'ipython',
+    "ipdb",
+    "ipython",
 ]
 
 setup(
     name="ipld",
-    packages=find_packages(exclude=['tests*']),
-    version=find_version('ipld', '__init__.py'),
+    packages=find_packages(exclude=["tests*"]),
+    version=find_version("ipld", "__init__.py"),
     author="Tim Daubenschuetz",
     author_email="tim.daubenschuetz@gmail.com",
     description="An IPLD implementation in Python",
     long_description=long_description,
-    license='MIT License',
+    license="MIT License",
     keywords="ipld python ipfs bigchaindb",
     classifiers=[
-        'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers',
-        'Natural Language :: English',
-        'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3 :: Only',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Topic :: Software Development',
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3 :: Only",
+        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
+        "Topic :: Software Development",
     ],
     install_requires=[
-        'cbor==1.0.0',
-        'base58>=2.1.1',
-        'planetmint-pymultihash',
-        'planetmint-multiaddr',
+        "cbor==1.0.0",
+        "base58>=2.1.1",
+        "planetmint-pymultihash",
+        "planetmint-multiaddr",
     ],
-    setup_requires=['pytest-runner'],
+    setup_requires=["pytest-runner"],
     tests_require=tests_require,
     extras_require={
-        'test': tests_require,
-        'dev': dev_require + tests_require,
+        "test": tests_require,
+        "dev": dev_require + tests_require,
     },
 )
