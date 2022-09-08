@@ -37,7 +37,7 @@ dev_require = [
 ]
 
 setup(
-    name="ipld",
+    name="planetmint-ipld",
     packages=find_packages(exclude=["tests*"]),
     version=find_version("ipld", "__init__.py"),
     author="Tim Daubenschuetz",
