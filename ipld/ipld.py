@@ -8,7 +8,7 @@ from multihash import digest
 # NOTE: jbenet plans to register tag 258:
 #       https://www.iana.org/assignments/cbor-tags/cbor-tags.xhtml
 LINK_TAG = 258
-LINK_SYMBOL = '/'
+LINK_SYMBOL = "/"
 
 
 def marshal(json_data):
@@ -28,7 +28,7 @@ def marshal(json_data):
                 pass
 
             if di:
-                raise KeyError('Links must not have siblings')
+                raise KeyError("Links must not have siblings")
             return Tag(LINK_TAG, link)
         return di
 
@@ -43,7 +43,7 @@ def unmarshal(cbor_data):
     def transform(di):
         for k, v in di.items():
             if isinstance(v, Tag):
-                link = Multiaddr(bytes_addr=v.value)
+                link = Multiaddr(addr=v.value)
 
                 try:
                     # the __str__ method of Multiaddr could fail
@@ -53,17 +53,16 @@ def unmarshal(cbor_data):
                 except:
                     link = v.value
                 finally:
-                    di[k] = {
-                        LINK_SYMBOL: link
-                    }
+                    di[k] = {LINK_SYMBOL: link}
 
             elif isinstance(v, dict):
                 di[k] = transform(v)
         return di
+
     return transform(json_data)
 
 
-def multihash(data, fn_name='sha2_256'):
+def multihash(data, fn_name="sha2_256"):
     """A utility function to make multihashing more convenient
 
     Args:
@@ -78,4 +77,4 @@ def multihash(data, fn_name='sha2_256'):
         A base58 encoded digest of a hash (encoded in ascii)
 
     """
-    return digest(data, fn_name).encode('base58').decode('ascii')
+    return digest(data, fn_name).encode("base58").decode("ascii")
