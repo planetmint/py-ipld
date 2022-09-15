@@ -2,7 +2,7 @@ from copy import deepcopy
 
 from cbor import dumps, loads, Tag
 from multiaddr import Multiaddr
-from multihash import digest
+from pymultihash import digest
 
 
 # NOTE: jbenet plans to register tag 258:

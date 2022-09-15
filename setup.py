@@ -59,7 +59,7 @@ setup(
     install_requires=[
         "cbor==1.0.0",
         "base58>=2.1.1",
-        "planetmint-pymultihash",
+        "planetmint-pymultihash>=0.9.2",
         "planetmint-multiaddr",
     ],
     setup_requires=["pytest-runner"],
